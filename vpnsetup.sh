@@ -122,8 +122,8 @@ EOF
     esac
     if [ "$os_type" = "alpine" ]; then
       os_ver=$(. /etc/os-release && printf '%s' "$VERSION_ID" | cut -d '.' -f 1,2)
-      if [ "$os_ver" != "3.17" ] && [ "$os_ver" != "3.18" ]; then
-        exiterr "This script only supports Alpine Linux 3.17/3.18."
+      if [ "$os_ver" != "3.17" ] && [ "$os_ver" != "3.18" ] && [ "$os_ver" != "3.19" ]; then
+        exiterr "This script only supports Alpine Linux 3.17/3.18/3.19."
       fi
     else
       os_ver=$(sed 's/\..*//' /etc/debian_version | tr -dc 'A-Za-z0-9')
@@ -245,8 +245,8 @@ install_pkgs() {
 }
 
 get_setup_url() {
-  base_url1="https://raw.githubusercontent.com/hwdsl2/setup-ipsec-vpn/master"
-  base_url2="https://gitlab.com/hwdsl2/setup-ipsec-vpn/-/raw/master"
+  base_url1="https://raw.githubusercontent.com/maple367/setup-ipsec-vpn/master"
+  base_url2="https://gitlab.com/maple367/setup-ipsec-vpn/-/raw/master"
   sh_file="vpnsetup_ubuntu.sh"
   if [ "$os_type" = "centos" ] || [ "$os_type" = "rhel" ] || [ "$os_type" = "rocky" ] \
     || [ "$os_type" = "alma" ] || [ "$os_type" = "ol" ]; then
